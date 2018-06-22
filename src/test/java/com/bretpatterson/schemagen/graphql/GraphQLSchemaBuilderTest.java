@@ -39,6 +39,18 @@ public class GraphQLSchemaBuilderTest {
 	private class TestType {
 
 		String myfield;
+		TestEnumType myTestEnumField;
+	}
+
+	private enum TestEnumType {
+		FIRST_VAL("valid_value"),
+		SECOND_VAL("invalid value");
+		private String value;
+		TestEnumType(String value) {this.value = value;}
+
+		// this is essential for the test: string representation of the enum containing spaces or other invalid characters
+		public String toString() { return this.value;}
+
 	}
 
 	@GraphQLController
